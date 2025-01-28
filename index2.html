@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        .calculator {
+            max-width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-yellow {
+            background-color: grey;
+        }
+       
+        
+        #result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <section class="calculator">
+        <form id="calcForm">
+            <label for="num1">First Number:</label>
+            <input type="text" id="num1" required>
+            
+            <label for="num2">Second Number:</label>
+            <input type="text" id="num2" required>
+        </form>
+        <div class="button">
+            <button type="button" class="btn btn-yellow" onclick="calculate('*')">×</button>
+            <button type="button" class="btn btn-yellow" onclick="calculate('/')">/</button>
+            <button type="button" class="btn btn-yellow" onclick="calculate('-')">-</button>
+            <button type="button" class="btn btn-yellow" onclick="calculate('+')">+</button>
+        </div>
+        <div id="result">Result!</div>
+    </section>
+
+    <script>
+        function calculate(operator) {
+            
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const resultDiv = document.getElementById('result');
+
+
+            let result;
+            switch(operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    
+                
+                    result = num1 / num2;
+                    break;
+            }
+
+            resultDiv.textContent = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
