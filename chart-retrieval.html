@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>download</title>
+</head>
+<body>
+    <button id="download-btn">Download & Show Chart</button>
+    <div style="width: 600px; height: 400px; margin: 20px auto;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        function loadScript(src, callBack){
+            var script = document.createElement("script");
+            script.src = src;
+            script.onload = script.onreadystatechange = callBack;
+            document.body.appendChild(script);
+        }
+
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js', function(){
+            const ctx = document.getElementById('myChart');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May'],
+                    datasets: [{
+                        label: 'Sales Over Months',
+                        data: [12, 19, 3, 5, 2],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
